@@ -28,7 +28,7 @@ test("Adding [100, 500] should remove all elements from [100, 200] up to [500, 6
   ]);
 });
 
-test("Adding [60, 70] and [100, 500] should remove all elements up to [600, 700]", () => {
+test("Adding [60, 70] and [100, 500] should remove all elements up to [500, 600]", () => {
   const range = new Range();
   range.addCursor(60, 70);
   const result = range.addCursor(100, 500);
