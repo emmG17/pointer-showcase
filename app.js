@@ -63,7 +63,7 @@ class Range {
     @returns A list containing the available ranges
     */
   addCursor(min, max) {
-    const cursor = pickRanges(min, max, this.availableRanges);
+    const cursor = pickRanges(min, max, _.cloneDeep(ranges));
     this.cursors.push(cursor);
     return this.#updateAvailableRanges();
   }
