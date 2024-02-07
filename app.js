@@ -1,5 +1,3 @@
-const _ = require("lodash");
-
 /**
  * Represents a cursor object with start and end positions.
  * @typedef {Object} Cursor
@@ -7,7 +5,7 @@ const _ = require("lodash");
  * @property {Number} end - The ending position of the cursor as an index of the ranges list.
  */
 
-const ranges = [
+const ranges = () => ([
   [0, 100],
   [100, 200],
   [200, 300],
@@ -18,7 +16,7 @@ const ranges = [
   [700, 800],
   [800, 900],
   [900, 1000],
-];
+]);
 
 /**
  * @description Creates a cursor from the range values and a list of ranges
@@ -63,7 +61,7 @@ class Range {
     @returns A list containing the available ranges
     */
   addCursor(min, max) {
-    const cursor = pickRanges(min, max, _.cloneDeep(ranges));
+    const cursor = pickRanges(min, max, ranges());
     this.cursors.push(cursor);
     return this.#updateAvailableRanges();
   }
@@ -82,7 +80,7 @@ class Range {
     @returns A list of the free ranges
   */
   #updateAvailableRanges() {
-    let values = _.cloneDeep(ranges);
+    let values = ranges();
     let result = [];
 
     for (let i = 0; i < values.length; i++) {
